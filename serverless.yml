@@ -1,0 +1,36 @@
+service: graalvm-scala
+
+provider:
+  name: aws
+  runtime: provided
+  profile: dev
+package:
+  exclude:
+    - .idea/**
+    - .gradle/**
+    - .serverless/**
+    - build/**
+    - gradle/**
+    - src/**
+    - build.gradle
+    - gradlew
+    - gradlew.bat
+    - serverless.yml
+    - '*.iml'
+  include:
+    - build/graal/**
+
+functions:
+  echo:
+    handler: echo
+    layers:
+      - {Ref: GraalLambdaLayer}
+
+  reverse:
+    handler: reverse
+    layers:
+      - {Ref: GraalLambdaLayer}
+
+layers:
+  graal:
+    path: build/graal

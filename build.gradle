@@ -1,0 +1,31 @@
+plugins {
+  id 'idea'
+  id 'scala'
+  id 'com.palantir.graal' version '0.2.0-4-g255fd1f'
+}
+
+repositories {
+  mavenCentral()
+  jcenter()
+}
+
+dependencies {
+  compile 'org.scala-lang:scala-library:2.12.6'
+  compile 'com.softwaremill.sttp:core_2.12:1.5.1'
+  compile 'com.fasterxml.jackson.core:jackson-databind:2.9.7'
+  compile 'com.fasterxml.jackson.module:jackson-module-scala_2.12:2.9.7'
+}
+
+graal {
+  mainClass 'Bootstrap'
+  outputName 'bootstrap'
+  graalVersion '1.0.0-rc10'
+  option '-H:EnableURLProtocols=http'
+  option '-Djava.net.preferIPv4Stack=true'
+}
+
+build.finalizedBy nativeImage
+
+task wrapper(type: Wrapper) {
+  gradleVersion = "4.10.3"
+}
