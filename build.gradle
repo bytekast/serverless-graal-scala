@@ -25,7 +25,3 @@ graal {
 }
 
 build.finalizedBy nativeImage
-
-task wrapper(type: Wrapper) {
-  gradleVersion = "4.10.3"
-}
