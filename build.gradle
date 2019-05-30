@@ -1,7 +1,7 @@
 plugins {
   id 'idea'
   id 'scala'
-  id 'com.palantir.graal' version '0.2.0-4-g255fd1f'
+  id "com.palantir.graal" version "0.3.0-29-gf737c91"
 }
 
 repositories {
@@ -19,7 +19,7 @@ dependencies {
 graal {
   mainClass 'Bootstrap'
   outputName 'bootstrap'
-  graalVersion '1.0.0-rc10'
+  graalVersion '1.0.0-rc16'
   option '-H:EnableURLProtocols=http'
   option '-Djava.net.preferIPv4Stack=true'
 }
